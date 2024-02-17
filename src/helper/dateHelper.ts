@@ -4,11 +4,11 @@ import localizedDate from 'dayjs/plugin/localizedFormat'
 dayjs.extend(relativeTime)
 dayjs.extend(localizedDate)
 
-const diffForHumans = (timestamp) => {
+const diffForHumans = (timestamp: number) => {
   return dayjs.unix(timestamp).fromNow()
 }
 
-const humanFriendlyDate = (timestamp) => {
+const humanFriendlyDate = (timestamp: number) => {
   return dayjs.unix(timestamp).format('llll')
 }
 

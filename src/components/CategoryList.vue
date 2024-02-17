@@ -11,22 +11,23 @@
 <script setup lang="ts">
 import { useForumStore } from '@/stores/forumStore'
 import ForumList from '@/components/ForumList.vue'
-import { computed } from 'vue'
+import { computed, type PropType } from 'vue'
+import type { Category, Forum } from '@/model/types'
 
 const forumStore = useForumStore()
 
-const forums = computed(() => {
+const forums = computed((): Forum[] => {
   return forumStore.forums
 })
 
 const props = defineProps({
   categories: {
-    type: Array,
+    type: [] as PropType<Category[]>,
     required: true
   }
 })
 
-const forumsById = (categoryId: string) => {
+const forumsById = (categoryId: string): Forum[] => {
   return forums.value.filter((f) => f.categoryId === categoryId)
 }
 </script>

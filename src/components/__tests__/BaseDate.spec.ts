@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
 import HelloWorld from '../BaseDate.vue'
-import { diffForHumans } from '@/helpers/dateHelpers'
+import { diffForHumans } from '@/helper/dateHelper'
 
 describe('HelloWorld', () => {
   it('renders properly', () => {

@@ -36,8 +36,9 @@
 </template>
 
 <script setup lang="ts">
+import type { Thread } from '@/model/types'
 import { useUserStore } from '@/stores/userStore'
-import { computed } from 'vue'
+import { computed, type PropType } from 'vue'
 
 const userStore = useUserStore()
 
@@ -47,7 +48,7 @@ const users = computed(() => {
 
 const props = defineProps({
   threads: {
-    type: Array,
+    type: [] as PropType<Thread[]>,
     required: true
   }
 })

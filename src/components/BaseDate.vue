@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { humanFriendlyDate, diffForHumans } from '@/helpers/dateHelpers'
+import { humanFriendlyDate, diffForHumans } from '@/helper/dateHelper'
 const props = defineProps({
   timestamp: {
     type: Number,
@@ -13,5 +13,6 @@ const props = defineProps({
   }
 })
 </script>
+s
 
 <style scoped></style>

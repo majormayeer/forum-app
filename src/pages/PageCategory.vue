@@ -9,6 +9,7 @@ import { useForumStore } from '@/stores/forumStore'
 import { computed } from 'vue'
 import ForumList from '@/components/ForumList.vue'
 import { storeToRefs } from 'pinia'
+import type { Forum } from '@/model/types'
 
 const categoryStore = useCategoryStore()
 
@@ -31,7 +32,7 @@ const category = computed(() => {
   return categories.value.find((c) => c.id === props.id)
 })
 
-const forumsById = (categoryId: string) => {
+const forumsById = (categoryId: string): Forum[] => {
   return forums.value.filter((f) => f.categoryId === categoryId)
 }
 </script>

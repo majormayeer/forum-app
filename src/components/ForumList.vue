@@ -31,9 +31,12 @@
 </template>
 
 <script setup lang="ts">
+import type { Forum } from '@/model/types'
+import type { PropType } from 'vue'
+
 const props = defineProps({
   forums: {
-    type: Array,
+    type: [] as PropType<Forum[]>,
     required: true
   },
   title: {
@@ -45,7 +48,7 @@ const props = defineProps({
   }
 })
 
-const threadCountWord = (forum) => {
+const threadCountWord = (forum: Forum) => {
   if (forum.threads?.length) {
     return forum.threads.length > 1 ? 'threads' : 'thread'
   } else {

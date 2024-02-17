@@ -19,6 +19,7 @@ import { useForumStore } from '@/stores/forumStore'
 import { useThreadStore } from '@/stores/threadStore'
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
+import type { Thread } from '@/model/types'
 
 const forumStore = useForumStore()
 
@@ -40,7 +41,7 @@ const forum = computed(() => {
 })
 
 const forumThreads = computed(() => {
-  return threads.value.filter((t) => t.forumId === props.id)
+  return threads.value.filter((t: Thread) => t.forumId === props.id)
 })
 </script>
 

@@ -19,10 +19,10 @@
             <img
               class="avatar-small"
               src="https://pbs.twimg.com/profile_images/1188775562657091594/5mgkg44t_400x400.jpg"
-              alt="`${userStore.authUser.name}`"
+              alt="`${authUser.name}`"
             />
             <span>
-              {{ userStore.authUser.name }}
+              {{ authUser?.name }}
               <img class="icon-profile" src="../assets/svg/arrow-profile.svg" alt="" />
             </span>
           </a>
@@ -66,7 +66,9 @@
 
 <script setup lang="ts">
 import { useUserStore } from '@/stores/userStore'
+import { storeToRefs } from 'pinia'
 const userStore = useUserStore()
+const { authUser } = storeToRefs(userStore)
 </script>
 
 <style scoped></style>

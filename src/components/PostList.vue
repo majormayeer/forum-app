@@ -26,8 +26,9 @@
   </div>
 </template>
 <script setup lang="ts">
+import type { Post } from '@/model/types'
 import { useUserStore } from '@/stores/userStore'
-import { computed } from 'vue'
+import { computed, type PropType } from 'vue'
 
 const userStore = useUserStore()
 const users = computed(() => {
@@ -36,7 +37,7 @@ const users = computed(() => {
 
 const props = defineProps({
   posts: {
-    type: Array,
+    type: [] as PropType<Post[]>,
     required: true
   }
 })

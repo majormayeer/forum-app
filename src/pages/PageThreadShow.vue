@@ -22,12 +22,10 @@ const props = defineProps({
 })
 
 const postStore = usePostStore()
+const { posts } = storeToRefs(postStore)
 
 const threadStore = useThreadStore()
-
 const { threads } = storeToRefs(threadStore)
-
-const { posts } = storeToRefs(postStore)
 
 const thread = computed(() => {
   return threads.value.find((thread) => thread.id === props.id)
@@ -37,10 +35,10 @@ const threadPosts = computed(() => {
   return posts.value.filter((p) => p.threadId === thread.value?.id)
 })
 
-const addPost = (eventData) => {
+const addPost = (eventData: any) => {
   const post = {
     ...eventData.post,
-    threadId: thread.value.id
+    threadId: thread.value?.id
   }
   postStore.addPost(post)
 }

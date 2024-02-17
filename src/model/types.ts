@@ -1,17 +1,19 @@
 export type User = {
   avatar: string
   email: string
+  lastVisitAt: number
   name: string
   isModerator: boolean
   registeredAt: number
   username: string
-  userNameLower: string
+  usernameLower: string
   id: string
 }
 
 export type Thread = {
-  contributers: string[]
+  contributors: string[]
   firstPostId: string
+  forumId: string
   lastPostAt: number
   lastPostId: string
   posts: string[]
@@ -28,7 +30,7 @@ export type Post = {
     by: string
     moderated: boolean
   }
-  published: number
+  publishedAt: number
   text: string
   threadId: string
   userId: string

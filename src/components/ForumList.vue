@@ -22,7 +22,7 @@
       <div class="last-thread">
         <img
           v-if="forum.threads?.length > 0"
-          :src="userById(getLastPost(forum.lastPostId)?.userId)?.avatar"
+          :src="userById(postById(forum.lastPostId)?.userId)?.avatar"
           alt=""
           class="avatar"
         />
@@ -32,14 +32,14 @@
 </template>
 
 <script setup lang="ts">
-import type { Forum, Post, User } from '@/model/types'
-import { usePostStore } from '@/stores/postStore'
-import { useUserStore } from '@/stores/userStore'
+import type { Forum } from '@/model/types'
+import { postById } from '@/helper/postHelper'
+import { userById } from '@/helper/userHelper'
 import type { PropType } from 'vue'
 
 const props = defineProps({
   forums: {
-    type: [] as PropType<Forum[]>,
+    type: Array as PropType<Forum[]>,
     required: true
   },
   title: {
@@ -57,17 +57,6 @@ const threadCountWord = (forum: Forum) => {
   } else {
     return 'no threads'
   }
-}
-
-const postStore = usePostStore()
-const userStore = useUserStore()
-
-const getLastPost = (postId: string): Post | undefined => {
-  return postStore.posts.find((p) => p.id === postId)
-}
-
-const userById = (userId: string | undefined): User | undefined => {
-  return userStore.users.find((u) => u.id === userId)
 }
 </script>
 

@@ -22,7 +22,7 @@ const forums = computed((): Forum[] => {
 
 const props = defineProps({
   categories: {
-    type: [] as PropType<Category[]>,
+    type: Array as PropType<Category[]>,
     required: true
   }
 })

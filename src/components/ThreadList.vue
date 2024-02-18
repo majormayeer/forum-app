@@ -48,7 +48,7 @@ const users = computed(() => {
 
 const props = defineProps({
   threads: {
-    type: [] as PropType<Thread[]>,
+    type: Array as PropType<Thread[]>,
     required: true
   }
 })

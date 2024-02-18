@@ -37,7 +37,7 @@ const users = computed(() => {
 
 const props = defineProps({
   posts: {
-    type: [] as PropType<Post[]>,
+    type: Array as PropType<Post[]>,
     required: true
   }
 })

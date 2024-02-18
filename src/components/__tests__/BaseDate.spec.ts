@@ -1,12 +1,18 @@
 import { describe, it, expect } from 'vitest'
-
 import { mount } from '@vue/test-utils'
-import HelloWorld from '../BaseDate.vue'
-import { diffForHumans } from '@/helper/dateHelper'
+import BaseDate from '@/components/BaseDate.vue'
+import { diffForHumans, humanFriendlyDate } from '@/helper/dateHelper'
 
-describe('HelloWorld', () => {
-  it('renders properly', () => {
-    const wrapper = mount(HelloWorld, { props: { timestamp: 1708203706 } })
-    expect(wrapper.text()).toContain(diffForHumans(1708203706))
+describe('BaseDate', () => {
+  const timestamp = 1708203706
+  it('has right content', () => {
+    const wrapper = mount(BaseDate, { props: { timestamp: timestamp } })
+    expect(wrapper.text()).toContain(diffForHumans(timestamp))
+  })
+  it('has right attribute', () => {
+    const wrapper = mount(BaseDate, { props: { timestamp: timestamp } })
+    expect(wrapper.attributes()).toEqual({
+      title: humanFriendlyDate(timestamp)
+    })
   })
 })

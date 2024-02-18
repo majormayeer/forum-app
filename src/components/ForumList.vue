@@ -21,7 +21,8 @@
       </div>
       <div class="last-thread">
         <img
-          src="https://pbs.twimg.com/profile_images/71924284259869908/Nu43rQz1_400x400.jpg"
+          v-if="forum.threads?.length > 0"
+          :src="userById(postById(forum.lastPostId)?.userId)?.avatar"
           alt=""
           class="avatar"
         />
@@ -32,11 +33,13 @@
 
 <script setup lang="ts">
 import type { Forum } from '@/model/types'
+import { postById } from '@/helper/postHelper'
+import { userById } from '@/helper/userHelper'
 import type { PropType } from 'vue'
 
 const props = defineProps({
   forums: {
-    type: [] as PropType<Forum[]>,
+    type: Array as PropType<Forum[]>,
     required: true
   },
   title: {

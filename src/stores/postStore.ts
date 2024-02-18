@@ -19,7 +19,7 @@ export const usePostStore = defineStore('postStore', {
         ...post
       }
       this.posts.push(newPost)
-      thread.posts.push(postId)
+      thread?.posts.push(postId)
     }
   },
   getters: {}

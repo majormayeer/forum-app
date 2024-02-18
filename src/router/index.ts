@@ -5,6 +5,7 @@ import PageNotFound from '@/pages/PageNotFound.vue'
 import data from '@/data.json'
 import PageForum from '@/pages/PageForum.vue'
 import PageCategory from '@/pages/PageCategory.vue'
+import PageProfile from '@/pages/PageProfile.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,6 +14,12 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: PageHome
+    },
+    {
+      path: '/profile/:id',
+      name: 'Profile',
+      component: PageProfile,
+      props: true
     },
     {
       path: '/category/:id',

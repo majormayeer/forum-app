@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import data from '../data.json'
-import type { User } from '@/model/types'
+import type { Post, Thread, User } from '@/model/types'
+import { usePostStore } from './postStore'
+import { useThreadStore } from './threadStore'
 
 export const useUserStore = defineStore('userStore', {
   state: () => {
@@ -9,8 +11,29 @@ export const useUserStore = defineStore('userStore', {
       authId: 'VXjpr2WHa8Ux4Bnggym8QFLdv5C3'
     }
   },
-  actions: {},
+  actions: {
+    setUser(userId: string, userObj: User) {
+      const userIndex = this.users.findIndex((u) => u.id === userId)
+      this.users[userIndex] = userObj
+    }
+  },
   getters: {
-    authUser: (state) => state.users.find((u) => u.id === state.authId)
+    authUser(state): User {
+      return state.users.find((u) => u.id === state.authId)!
+    },
+    userPosts(state): Post[] {
+      const posts = usePostStore().posts
+      return posts.filter((p) => p.userId === state.authId)
+    },
+    userPostCount(): number {
+      return this.userPosts.length
+    },
+    userThreads(): Thread[] {
+      const threads = useThreadStore().threads
+      return threads.filter((t) => t.userId === this.authUser?.id)
+    },
+    userThreadCount(): number {
+      return this.userThreads.length
+    }
   }
 })

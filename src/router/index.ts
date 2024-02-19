@@ -22,6 +22,12 @@ const router = createRouter({
       props: true
     },
     {
+      path: '/profile/:id/:edit=true',
+      name: 'ProfileEdit',
+      component: PageProfile,
+      props: true
+    },
+    {
       path: '/category/:id',
       name: 'Category',
       component: PageCategory,

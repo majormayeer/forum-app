@@ -11,7 +11,12 @@ export const useUserStore = defineStore('userStore', {
       authId: 'VXjpr2WHa8Ux4Bnggym8QFLdv5C3'
     }
   },
-  actions: {},
+  actions: {
+    setUser(userId: string, userObj: User) {
+      const userIndex = this.users.findIndex((u) => u.id === userId)
+      this.users[userIndex] = userObj
+    }
+  },
   getters: {
     authUser(state): User {
       return state.users.find((u) => u.id === state.authId)!

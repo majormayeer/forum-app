@@ -15,6 +15,15 @@
     <p class="text-large text-center">
       <i class="fa fa-globe"><a href="#">batman.com</a></i>
     </p>
+    <p class="text-xsmall text-faded text-center">Member since whatever</p>
+    <div class="text-center">
+      <hr />
+      <router-link
+        :to="{ name: 'ProfileEdit', params: { id: props.user.id, edit: 'true' } }"
+        class="btn-green btn-small"
+        >Edit profile</router-link
+      >
+    </div>
   </div>
 </template>
 

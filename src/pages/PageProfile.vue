@@ -2,12 +2,8 @@
   <div class="container">
     <div class="flex-grid">
       <div class="col-3 push-top">
-        <UserProfileCard :user="authUser" />
-        <p class="text-xsmall text-faded text-center">Member since whatever</p>
-        <div class="text-center">
-          <hr />
-          <a href="#" class="btn-green btn-small">Edit profile</a>
-        </div>
+        <UserProfileCard v-if="!props.edit" :user="authUser" />
+        <UserProfileCardEditor v-if="props.edit" :user="authUser" />
       </div>
       <div class="col-7 push-top">
         <div class="profile-header">
@@ -37,9 +33,17 @@ import { useUserStore } from '@/stores/userStore'
 import { storeToRefs } from 'pinia'
 import PostList from '@/components/PostList.vue'
 import UserProfileCard from '@/components/UserProfileCard.vue'
+import UserProfileCardEditor from '@/components/UserProfileCardEditor.vue'
 
 const userStore = useUserStore()
 const { authUser, userPosts } = storeToRefs(userStore)
+
+const props = defineProps({
+  edit: {
+    type: Boolean,
+    default: false
+  }
+})
 </script>
 
 <style scoped></style>

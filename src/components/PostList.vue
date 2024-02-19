@@ -28,12 +28,11 @@
 <script setup lang="ts">
 import type { Post } from '@/model/types'
 import { useUserStore } from '@/stores/userStore'
-import { computed, type PropType } from 'vue'
+import { storeToRefs } from 'pinia'
+import { type PropType } from 'vue'
 
 const userStore = useUserStore()
-const users = computed(() => {
-  return userStore.users
-})
+const { users } = storeToRefs(userStore)
 
 const props = defineProps({
   posts: {

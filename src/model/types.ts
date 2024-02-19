@@ -8,6 +8,9 @@ export type User = {
   username: string
   usernameLower: string
   id: string
+  bio?: string
+  website?: string
+  location?: string
 }
 
 export type Thread = {
